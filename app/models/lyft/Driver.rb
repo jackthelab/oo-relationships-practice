@@ -12,7 +12,7 @@ class Driver
     def initialize(name)
         @name = name
 
-        @@all.push(name)
+        @@all.push(self)
     end
 
     def rides
@@ -46,7 +46,7 @@ class Driver
                 drivers_over.push(driver)
             end
         end
-        
+
     end
 
 end
