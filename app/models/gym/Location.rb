@@ -6,7 +6,7 @@
 #least_clients => find location with least clients. Increase marketing spend there
 ###Class method to find, instance helper method to adjust marketing spend
 
-require './TrainerLocations.rb'
+require './TrainerLocation.rb'
 
 class Location
 
@@ -21,7 +21,8 @@ class Location
     end
 
     def trainers
-        #
+        trainer_locations = TrainerLocation.all.select { |tl| tl.location == self }
+        return trainer_locations.collect { |tl| tl.trainer }
     end
 
     def clients
@@ -29,11 +30,27 @@ class Location
         self.trainers.each do |trainer|
             location_clients.push(trainer.clients)
         end
-        location_clients.flatten
+        return location_clients.flatten
+    end
+
+    def add_spend(amount, department)
+        return "Adding $#{amount} of spend to the #{department} department for the #{self.name} location."
     end
 
     def self.least_clients
-        #
+        least_clients = self.all.first
+        least_clients_volume = least_clients.clients.count
+
+        self.all.each do |location|
+            if location.clients.count < least_clients_volume
+                least_clients = location
+                least_clients_volume = location.clients.count
+            end
+        end
+
+        least_clients
+
+        least_clients.add_spend(1000, "Marketing")
     end
 
 end

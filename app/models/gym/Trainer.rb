@@ -6,7 +6,7 @@
 #most_clients => find trainer with most clients, give that trainer a bonus
 ###Class method to find, instance method to give bonus
 
-require './TrainerLocations.rb'
+require './TrainerLocation.rb'
 
 class Trainer
 
@@ -21,16 +21,21 @@ class Trainer
     end
 
     def locations
-        #array of all locations
-        ##will be locations where clients can go
+        trainer_locations = TrainerLocation.all.select { |tl| tl.trainer == self }
+        locations = trainer_locations.collect { |tl| tl.location }
+        return locations
     end
 
     def clients
-        #array of all clients
+        return Client.all.select { |client| client.trainer == self }
     end
 
     def add_location(location)
-        #where am I sending this...?
+        new_tl = TrainerLocation.new(self, location)
+    end
+
+    def remove_location(t_l)
+        TrainerLocation.delete(t_l)
     end
 
     def give_bonus(amount)
@@ -38,7 +43,15 @@ class Trainer
     end
 
     def self.most_clients
-        #find trainer with most clients, keep as variable busiest_trainer
+        busiest_trainer_clients = 0
+        busiest_trainer = nil
+
+        self.all.each do |trainer|
+            if trainer.clients.count > busiest_trainer_clients
+                busiest_trainer_clients = trainer.clients.count
+                busiest_trainer = trainer
+            end
+        end
         
         busiest_trainer.give_bonus(1000)
     end

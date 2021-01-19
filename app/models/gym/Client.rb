@@ -8,12 +8,13 @@ require './Trainer.rb'
 
 class Client
 
-    attr_reader :trainer, :name, :favorite_location
+    attr_reader :trainer, :name, :favorite_location, :visits
     
     @@all = []
 
     def initialize(name)
         @name = name
+        @visits = 0
 
         @@all.push(self)
     end
@@ -23,15 +24,19 @@ class Client
     end
 
     def locations
-        #need to go to single source of truth to find all locations
-        ##wherever their trainer can be, they can be
-        ###SSOT for this should ultimately come from SSOT for trainer-location relationship
-
-        #something like --> self.trainer.locations
+        self.trainer.locations
     end
 
     def favorite_location(location)
         @favorite_location = favorite_location
+    end
+
+    def check_in
+        @visits += 1
+    end
+
+    def self.all
+        @@all
     end
 
 end
