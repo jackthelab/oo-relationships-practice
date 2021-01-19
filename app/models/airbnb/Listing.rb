@@ -27,7 +27,7 @@ class Listing
 
     def guests
         guests_list = self.trips.collect { |trip| trip.guest }
-        return guests_list.uniq!
+        return guests_list.uniq    
     end
 
     def trips

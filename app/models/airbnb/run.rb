@@ -18,6 +18,6 @@ trip_3 = Trip.new(austin_eastsider, jacob)
 trip_4 = Trip.new(ocean_side, kimberly)
 trip_5 = Trip.new(ocean_side, liz)
 
-binding.pry
+#binding.pry
 
 puts "Done."

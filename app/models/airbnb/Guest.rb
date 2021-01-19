@@ -27,7 +27,7 @@ class Guest
     def listings
         stays = Trip.all.select { |trip| trip.guest == self }
         listings = stays.collect { |trip| trip.listing }
-        return listings.uniq!
+        return listings.uniq
     end
 
     def trips
