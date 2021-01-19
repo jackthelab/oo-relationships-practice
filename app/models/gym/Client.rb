@@ -27,8 +27,8 @@ class Client
         self.trainer.locations
     end
 
-    def favorite_location(location)
-        @favorite_location = favorite_location
+    def favorite_location=(location)
+        @favorite_location = location
     end
 
     def check_in
