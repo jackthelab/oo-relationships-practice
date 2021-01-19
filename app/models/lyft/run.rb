@@ -18,7 +18,8 @@ ride_three = Ride.new(kimberly, derek, 7.5)
 ride_four = Ride.new(jacob, yvonne, 8)
 ride_five = Ride.new(kimberly, yvonne, 21.3)
 ride_six = Ride.new(isaiah, derek, 4.78)
+ride_sever = Ride.new(kimberly, liz, 75)
 
-binding.pry
+#binding.pry
 
 puts "Done."

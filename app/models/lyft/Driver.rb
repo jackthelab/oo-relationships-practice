@@ -43,9 +43,11 @@ class Driver
                 driver_miles += ride.distance
             end
             if driver_miles > distance
-                drivers_over.push(driver)
+                drivers_over.push("#{driver.name}: #{driver_miles}")
             end
         end
+
+        return drivers_over
 
     end
 
