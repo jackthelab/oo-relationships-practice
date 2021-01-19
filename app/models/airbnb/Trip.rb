@@ -14,7 +14,7 @@ class Trip
 
     @@all = []
 
-    def intialize(listing, guest)
+    def initialize(listing, guest)
         @listing = listing
         @guest = guest
 
