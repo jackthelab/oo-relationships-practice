@@ -35,5 +35,5 @@ tl_six = TrainerLocation.new(amy, west_gym)
 tl_seven = TrainerLocation.new(amy, north_gym)
 tl_eight = TrainerLocation.new(liz, north_gym)
 
-binding.pry
+#binding.pry
 puts "Done."
