@@ -23,5 +23,10 @@ class Ride
 
     def self.average_distance
         #find average distance of all rides
+    
+        total_distance = 0
+        self.all.each { |trip| total_distance += trip.distance }
+
+        return total_distance / self.all.count
     end
 end
