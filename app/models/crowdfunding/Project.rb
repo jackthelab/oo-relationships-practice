@@ -47,7 +47,7 @@ class Project
 
     def self.above_goal
         #all projects which have met or exceeded their pledge goal
-        self.all.select { |project| project.total_pledged >= pledge_goal }
+        self.all.select { |project| project.total_pledged >= project.pledge_goal }
     end
 
     def self.most_backers
