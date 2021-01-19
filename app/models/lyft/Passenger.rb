@@ -1,7 +1,7 @@
 #passenger has many rides but a ride has a passenger
 #passenger initialized with name argument
 
-require 'Ride.rb'
+require './Ride.rb'
 
 class Passenger
 
