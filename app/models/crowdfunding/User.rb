@@ -19,35 +19,49 @@ class User
     ## instance methods ##
 
     def back_project(project, pledge_amount)
-        #
+        new_pledge = Pledge.new(project, pledge_amount, self)
     end
 
-    def create_project(name, pledge_goal)
-        #
+    def creates_project(name, pledge_goal)
+        new_project = Project.new(name, pledge_goal, self)
     end
 
     def backed_projects
-        #
+        projects_with_pledge = Pledges.all.select { |pledge| pledge.user == self }
+        return projects_with_pledge.uniq
     end
 
     def created_projects
-        #
+        return Projects.all.select { |project| project.creator == self }
     end
 
     def self.all
-        @@all
+        return @@all
     end
 
     def self.highest_pledge
         #user has made the highest pledge
+        highest_pledge = 0
+        highest_pledger = nil
+
+        Pledge.all.each do |pledge|
+            if pledge.amount > highest_pledge
+                highest_pledge = pledge.amount
+                highest_pledger = pledge.user
+            end
+        end
+
+        highest_pledger
     end
 
     def self.multi_pledger
         #all users who have pledged to multiple projects
+        self.all.select { |user| user.backed_projects.count > 1 }
     end
 
     def self.project_creator
         #all users who have created a project
+        self.all.select { |user| user.created_projects.count > 0 }
     end
 
 end

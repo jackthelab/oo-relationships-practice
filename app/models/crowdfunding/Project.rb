@@ -52,6 +52,8 @@ class Project
 
     def self.most_backers
         #project with the highest number of backers
+        #could do class method to find number of backers for all projects
+        #then most backers just has to find max?
         most_backers = nil
         most_backers_volume = 0
 
