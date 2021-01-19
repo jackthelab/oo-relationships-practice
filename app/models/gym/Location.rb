@@ -37,6 +37,10 @@ class Location
         return "Adding $#{amount} of spend to the #{department} department for the #{self.name} location."
     end
 
+    def self.all
+        @@all
+    end
+
     def self.least_clients
         least_clients = self.all.first
         least_clients_volume = least_clients.clients.count

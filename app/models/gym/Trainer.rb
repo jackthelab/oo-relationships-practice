@@ -42,6 +42,10 @@ class Trainer
         puts "#{self.name} received a bonus of $#{amount}!"
     end
 
+    def self.all
+        @@all
+    end
+
     def self.most_clients
         busiest_trainer_clients = 0
         busiest_trainer = nil
