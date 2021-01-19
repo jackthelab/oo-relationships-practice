@@ -7,6 +7,8 @@ require './Pledge.rb'
 require './Project.rb'
 
 class User
+
+    attr_reader :name
     
     @@all = []
 
@@ -27,12 +29,12 @@ class User
     end
 
     def backed_projects
-        projects_with_pledge = Pledges.all.select { |pledge| pledge.user == self }
-        return projects_with_pledge.uniq
+        projects_with_pledge = Pledge.all.select { |pledge| pledge.user == self }
+        return projects_with_pledge.uniq.collect { |pledge| pledge.project }
     end
 
     def created_projects
-        return Projects.all.select { |project| project.creator == self }
+        return Project.all.select { |project| project.creator == self }
     end
 
     def self.all
