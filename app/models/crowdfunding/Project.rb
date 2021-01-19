@@ -21,27 +21,48 @@ class Project
 
     ##instance methods##
     def backers
-        #
+        backers = self.pledges.collect { |pledge| pledge.user }
+        return backers.uniq
     end
 
     def pledges
-        #
+        return Pledge.all.select { |pledge| pledge.project == self }
     end
 
+    def total_pledged
+        pledged_amount = 0
+        self.pledges.each { |pledge| pledged_amount += pledge.amount }
+        return pledged_amount
+    end
+
+    ##class methods##
     def self.all
         @@all
     end
 
     def self.no_pledges
         #all projects with no pledges yet
+        self.all.select { |project| project.pledges.count == 0 }
     end
 
     def self.above_goal
         #all projects which have met or exceeded their pledge goal
+        self.all.select { |project| project.total_pledged >= pledge_goal }
     end
 
     def self.most_backers
         #project with the highest number of backers
+        most_backers = nil
+        most_backers_volume = 0
+
+        self.all.each do |project|
+            if project.backers.count > most_backers_volume
+                most_backers_volume = project.backers.count
+                most_backers = project
+            end
+        end
+
+        most_backers
     end
 
 end
