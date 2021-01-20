@@ -26,8 +26,8 @@ class Listing
     end
 
     def guests
-        guests_list = self.trips.collect { |trip| trip.guest }
-        return guests_list.uniq    
+        guests_list = self.trips.collect { |trip| trip.guest }.uniq
+        return guests_list   
     end
 
     def trips
@@ -47,17 +47,19 @@ class Listing
     end
 
     def self.most_popular
-        highest_count = 0
-        most_pop = nil
+        # highest_count = 0
+        # most_pop = nil
 
-        self.all.each do |listing|
-            if listing.trips_count > highest_count
-                highest_count = listing.trips_count
-                most_pop = listing
-            end
-        end
+        # self.all.each do |listing|
+        #     if listing.trips_count > highest_count
+        #         highest_count = listing.trips_count
+        #         most_pop = listing
+        #     end
+        # end
 
-        return most_pop
+        # return most_pop
+
+        return self.all.max_by { |listing| listing.trips_count }
     end
 
 end
