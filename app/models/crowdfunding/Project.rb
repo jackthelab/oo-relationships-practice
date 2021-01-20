@@ -21,8 +21,8 @@ class Project
 
     ##instance methods##
     def backers
-        backers = self.pledges.collect { |pledge| pledge.user }
-        return backers.uniq
+        return backers = self.pledges.collect { |pledge| pledge.user }.uniq
+        #return backers.uniq
     end
 
     def pledges
@@ -54,17 +54,19 @@ class Project
         #project with the highest number of backers
         #could do class method to find number of backers for all projects
         #then most backers just has to find max?
-        most_backers = nil
-        most_backers_volume = 0
+        # most_backers = nil
+        # most_backers_volume = 0
 
-        self.all.each do |project|
-            if project.backers.count > most_backers_volume
-                most_backers_volume = project.backers.count
-                most_backers = project
-            end
-        end
+        # self.all.each do |project|
+        #     if project.backers.count > most_backers_volume
+        #         most_backers_volume = project.backers.count
+        #         most_backers = project
+        #     end
+        # end
 
-        most_backers
+        # most_backers
+
+        return self.all.max_by { |project| project.backers.count }
     end
 
 end

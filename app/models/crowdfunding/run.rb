@@ -26,6 +26,5 @@ pledge_seven = Pledge.new(photo_boards, 4000, david)
 pledge_eight = Pledge.new(electric_bike, 50000, kimberly)
 
 
-
-#binding.pry
+binding.pry
 puts "Done."
