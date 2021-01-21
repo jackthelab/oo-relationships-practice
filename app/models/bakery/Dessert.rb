@@ -10,6 +10,7 @@ class Dessert
 
     def initialize(name, bakery, ingredients)
         @name = name
+        @bakery = bakery
         @ingredients = ingredients
         @@all.push(self)
     end

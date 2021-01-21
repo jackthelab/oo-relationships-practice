@@ -7,13 +7,13 @@ require './Dessert.rb'
 
 class Ingredient
 
-    attr_reader :name, :calorie_count
+    attr_reader :name, :calories
 
     @@all = []
 
-    def initialize(name, calorie_count)
+    def initialize(name, calories)
         @name = name
-        @calorie = calorie_count
+        @calories = calories
         @@all.push(self)
     end
 
