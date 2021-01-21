@@ -34,7 +34,7 @@ class Ingredient
     def self.find_all_by_name(ingredient)
         #array of all ingredients with the ingredient string in name
         ## ingredient = chocolate needs to return [chocolate sprinkles, chocolate, etc.]
-        return self.all.select { |item| item.name.split(' ').include(ingredient) }
+        return self.all.select { |item| item.name.split(' ').include?(ingredient) }
     end
 
 end

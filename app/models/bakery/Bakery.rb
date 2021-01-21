@@ -27,16 +27,17 @@ class Bakery
 
     def average_calories
         #float for the average number of calories in every dessert
-        return self.ingredients.collect { |ingredient| ingredient.calories }.reduce(:+) / self.calories.length
+        #return self.ingredients.collect { |ingredient| ingredient.calories }.reduce(:+) / self.ingredients.length
+        return self.desserts.collect { |dessert| dessert.calories }.reduce(:+) / self.desserts.length
     end
 
     def shopping_list
         #string of names of ingredients for the bakery
-        return self.ingredients.collect { |ingredient| ingredient.name }.join(', ')
+        return self.ingredients.collect { |ingredient| ingredient.name }.uniq.join(', ')
     end
 
     def self.all
-        @@all
+        return @@all
     end
 
 end
