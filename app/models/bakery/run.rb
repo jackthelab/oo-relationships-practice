@@ -23,5 +23,5 @@ dessert_four = Dessert.new("cookie", steve_snacks, [icing, flour])
 dessert_five = Dessert.new("milkshake", bistro_shop, [milk, ice_cream])
 
 
-binding.pry
+#binding.pry
 puts "Delicious."
