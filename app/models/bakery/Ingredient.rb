@@ -5,7 +5,7 @@
 
 require './Dessert.rb'
 
-def Ingredient
+class Ingredient
 
     attr_reader :name, :calorie_count
 
@@ -19,22 +19,22 @@ def Ingredient
 
     def dessert
         #array of all desserts using ingredient
-        ## Dessert.all.select { |dessert| dessert.ingredients.include?(self) }
+        return Dessert.all.select { |dessert| dessert.ingredients.include?(self) }
     end
 
     def bakeries
         #array of all bakeries using ingredient
-        ## self.dessert.collect { |dessert| dessert.bakery }
+        return self.dessert.collect { |dessert| dessert.bakery }
     end
 
     def self.all
-        @@all
+        return @@all
     end
 
     def self.find_all_by_name(ingredient)
         #array of all ingredients with the ingredient string in name
         ## ingredient = chocolate needs to return [chocolate sprinkles, chocolate, etc.]
-        # self.all.select { |item| item.split(' ').include(ingredient) }
+        return self.all.select { |item| item.name.split(' ').include(ingredient) }
     end
 
 end

@@ -15,8 +15,7 @@ class Dessert
     end
 
     def calories
-        #float totaling all calories
-        ## self.ingredients.collect { |ingredient| ingredient.calories }.reduce(:+)
+        return self.ingredients.collect { |ingredient| ingredient.calories }.reduce(:+)
     end
 
     def self.all

@@ -17,19 +17,22 @@ class Bakery
 
     def desserts
         #array of all desserts the bakery makes
+        return Dessert.all.select { |dessert| dessert.bakery == self }
     end
 
     def ingredients
         #array of all ingredients used in all desserts
+        return self.desserts.collect { |dessert| dessert.ingredients }.flatten
     end
 
     def average_calories
         #float for the average number of calories in every dessert
+        return self.ingredients.collect { |ingredient| ingredient.calories }.reduce(:+) / self.calories.length
     end
 
     def shopping_list
         #string of names of ingredients for the bakery
-        ##self.ingredients.join(", ")
+        return self.ingredients.collect { |ingredient| ingredient.name }.join(', ')
     end
 
     def self.all
